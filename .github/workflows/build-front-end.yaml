@@ -4,8 +4,12 @@ on:
     branches:
       - main
     paths:
-    - 'src/front-end/**'
+      - 'src/front-end/**'
   pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/front-end/**'
     types: [opened, synchronize, reopened]
 jobs:
   sonarcloud:
