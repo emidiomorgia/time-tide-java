@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>info.morgia.timetide</groupId>
-	<artifactId>bff</artifactId>
+	<artifactId>time-tide-java-bff</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bff</name>
 	<description>BFF for Time Tide Java Project</description>
