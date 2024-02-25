@@ -1,4 +1,4 @@
-name: SonarCloud
+name: Build Pipeline BFF
 on:
   push:
     branches:
@@ -11,7 +11,7 @@ on:
       - 'src/services/bff/**'
 jobs:
   build:
-    name: Build and analyze
+    name: Build and analyze BFF
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
