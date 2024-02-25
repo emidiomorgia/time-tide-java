@@ -1,4 +1,4 @@
-name: Build
+name: Build Pipeline Front-End
 on:
   push:
     branches:
