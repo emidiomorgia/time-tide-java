@@ -7,6 +7,9 @@ on:
       - 'src/front-end/**'
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - 'src/front-end/**'
+
 jobs:
   sonarcloudFrontend:
     name: SonarCloudFrontend
