@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping(produces = "application/json")
     public HelloResponseGetDto getHello() {
-        return new HelloResponseGetDto("ok 1",1);
+        return new HelloResponseGetDto("ok 2",1);
     }
 }
