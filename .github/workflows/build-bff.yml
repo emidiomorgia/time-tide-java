@@ -11,7 +11,7 @@ on:
       - 'src/services/bff/**'
 jobs:
   build:
-    name: Build and analyze BFF
+    name: SonadCloudBFF
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
