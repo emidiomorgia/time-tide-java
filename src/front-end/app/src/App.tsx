@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Home component a
+          Home component 2
         </a>
       </header>
     </div>
