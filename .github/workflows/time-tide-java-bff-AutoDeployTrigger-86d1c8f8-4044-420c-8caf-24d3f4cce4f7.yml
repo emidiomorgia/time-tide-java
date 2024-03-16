@@ -7,7 +7,7 @@ on:
     branches: 
       [ main ]
     paths:
-    - 'src/services/bff/DockerFile/**'
+    - 'src/services/bff/**'
     - '.github/workflows/time-tide-java-bff-AutoDeployTrigger-86d1c8f8-4044-420c-8caf-24d3f4cce4f7.yml'
 
   # Allow manual trigger 
@@ -29,7 +29,7 @@ jobs:
       - name: Build and push container image to registry
         uses: azure/container-apps-deploy-action@v2
         with:
-          appSourcePath: ${{ github.workspace }}src/services/bff/DockerFile 
+          appSourcePath: ${{ github.workspace }}src/services/bff 
           registryUrl: docker.io
           registryUsername: ${{ secrets.TIMETIDEJAVABFF_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.TIMETIDEJAVABFF_REGISTRY_PASSWORD }}
