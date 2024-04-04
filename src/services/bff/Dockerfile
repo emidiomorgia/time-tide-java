@@ -1,24 +1,20 @@
-# Stage 1: Build stage
-FROM maven:3.8.4-openjdk-17 AS build
-WORKDIR /app
+# Using Oracle GraalVM for JDK 17
+FROM container-registry.oracle.com/graalvm/native-image:21-ol8 AS builder
 
-# Copia solo il file POM per scaricare le dipendenze
-COPY pom.xml .
-RUN mvn dependency:go-offline
+# Set the working directory to /home/app
+WORKDIR /build
 
-# Copia i file sorgenti e compila l'applicazione
-COPY src src
-RUN mvn package -DskipTests
+# Copy the source code into the image for building
+COPY . /build
 
-# Stage 2: Run stage
-FROM eclipse-temurin:17-jre-alpine
-WORKDIR /app
+# Build
+RUN ./mvnw --no-transfer-progress native:compile -Pnative
 
-# Copia solo il file JAR compilato dallo stage di build
-COPY --from=build /app/target/time-tide-java-bff-0.0.1-SNAPSHOT.jar /app/app.jar
+# The deployment Image
+FROM container-registry.oracle.com/os/oraclelinux:8-slim
 
-# Esponi la porta 8080
 EXPOSE 8080
 
-# Comando per avviare l'applicazione quando il container viene avviato
-CMD ["java", "-jar", "app.jar"]
+# Copy the native executable into the containers
+COPY --from=builder /build/target/time-tide-java-bff app
+ENTRYPOINT ["/app"]
